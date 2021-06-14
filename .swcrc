@@ -1,0 +1,29 @@
+{
+  "jsc": {
+    "baseUrl": ".",
+    "parser": {
+      "syntax": "typescript",
+      "tsx": false,
+      "decorators": false,
+      "dynamicImport": false,
+      "importAssertions": false
+    },
+    "transform": null,
+    "target": "es2020",
+    "externalHelpers": false,
+    "keepClassNames": false,
+    "loose": false,
+    "paths": {
+      "lib/": ["./lib/"],
+      "test/": ["./test/"]
+    }
+  },
+  "module": {
+    "type": "commonjs",
+    "strict": true,
+    "strictMode": true,
+    "lazy": false,
+    "noInterop": true
+  },
+  "sourceMaps": "inline"
+}

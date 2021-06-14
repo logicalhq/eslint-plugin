@@ -1,0 +1,29 @@
+plan:
+    package: ./.dagger/ci
+name: ci
+inputs:
+    defaults.image:
+        text: node:17.1.0-alpine3.14
+    defaults.source:
+        dir:
+            path: .
+sops:
+    kms: []
+    gcp_kms: []
+    azure_kv: []
+    hc_vault: []
+    age:
+        - recipient: age1jgkw8wsr94ycvd4psxpvgxv286hpm8t76ajarkzjeer3avuxkfqqxnrpxc
+          enc: |
+            -----BEGIN AGE ENCRYPTED FILE-----
+            YWdlLWVuY3J5cHRpb24ub3JnL3YxCi0+IFgyNTUxOSBUSGk5eXU3cDcyZ2EzT1Nw
+            bFl5QTh0MTRlVnFPbVkwRFRCZXBjeCt5REdJCmNPMENIZDRmejNlOXNvVDRuYVpN
+            OVpjQ1Bqb28wMW5BWjM5ZG10UVAvVVEKLS0tIHR1aWYwUmxlNTkyTFJuNzJ1THNO
+            Wm9Dc21PV203WmRFVkpxbzRocFpIU3cKhamkGSuBn/qCe12UXdesjv3utjK3Mr4b
+            x8v5HX+i82TdzA5goJlWUUstDxxsEQAJiYmVEJblTtHg47yB8gWURg==
+            -----END AGE ENCRYPTED FILE-----
+    lastmodified: "2021-11-19T21:26:45Z"
+    mac: ENC[AES256_GCM,data:GnK7riUpnZAsgtYOWtqIC1XiJt52jbM3y9cyvmpx81CUNhqTmAd5UJoC8XP5iw+ICd497aTiPKQUPG0/43RmNowdocccycmvFthQTXjGO/44RngSuesydtQ0f6b1TDVui+xHJ6U171dzpy3iM7kQm3eV1cTOr4vRuQ85UaBm5NQ=,iv:DZVBLL0IcjsL4PJ9/zn1rGY7L3g8FbwEiaKFWpSEWyg=,tag:S0yKscV4u4NgGj0pSTmqfg==,type:str]
+    pgp: []
+    encrypted_suffix: secret
+    version: 3.7.1
