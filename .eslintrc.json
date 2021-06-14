@@ -1,0 +1,38 @@
+{
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": true,
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint", "@logicalhq"],
+  "extends": [
+    "@logicalhq/eslint-config-base",
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "no-case-declarations": "off",
+    "@logicalhq/imports": ["error", { "scopes": ["lib", "test"] }],
+    "@typescript-eslint/no-explicit-any": "off"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.*spec.ts"],
+      "env": {
+        "jest": true
+      },
+      "plugins": ["jest"],
+      "rules": {
+        "dot-notation": "off",
+        "no-restricted-globals": [
+          "error",
+          "fdescribe",
+          "ddescribe",
+          "fit",
+          "iit"
+        ]
+      }
+    }
+  ]
+}
