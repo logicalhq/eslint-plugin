@@ -1,7 +1,10 @@
 version: 2.1
+
 orbs:
   dagger: logicalhq/dagger@1.1
+
 workflows:
   build:
     jobs:
-      - dagger/dagger
+      - dagger/dagger:
+          executor: dagger/default
