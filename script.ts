@@ -15,10 +15,8 @@ const program = new Denomander({
 });
 
 /**
- * The publish workflow in a nutshell:
- *  - git commit -S -m ":bookmark: $VERSION."
- *  - yarn version --new-version $VERSION --message "[release] $VERSION"
- *  - git tag v$VERSION
+ * The publish workflow in a nushell:
+ *  - yarn version --new-version $VERSION --message ":bookmark: $VERSION."
  *  - git push origin refs/tags/v$VERSION
  *  - git push
  *  - yarn publish --new-version $VERSION --access public
@@ -54,16 +52,6 @@ program.command('publish', 'Publishes the package.').action(async () => {
 
   log.info(`Releasing ${cleanVersion}...`);
 
-  log.info('Committing the version.');
-  const commitStatus = await Deno.run({
-    cmd: ['git', 'commit', '-S', '-m', `:bookmark: ${cleanVersion}.`]
-  }).status();
-
-  if (!commitStatus.success) {
-    log.error('Commit failed.');
-    return;
-  }
-
   log.info('Registering the version.');
   const createVersionStatus = await Deno.run({
     cmd: [
@@ -72,22 +60,12 @@ program.command('publish', 'Publishes the package.').action(async () => {
       '--new-version',
       cleanVersion,
       '--message',
-      `:bookmark: [release] ${cleanVersion}.`
+      `:bookmark: ${cleanVersion}.`
     ]
   }).status();
 
   if (!createVersionStatus.success) {
     log.error('Creating a new version failed.');
-    return;
-  }
-
-  log.info('Creating a tag for the version.');
-  const createTagStatus = await Deno.run({
-    cmd: ['git', 'tag', `v${cleanVersion}`]
-  }).status();
-
-  if (!createTagStatus.success) {
-    log.error('Creating a tag for the new version failed.');
     return;
   }
 
