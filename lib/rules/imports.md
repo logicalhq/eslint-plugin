@@ -21,7 +21,7 @@ This rules aims to standardize the imports order across the codebase.
 
 ```ts
 type Options = {
-  strategy?: string | StrategyClass<ImportsStrategy>;
+  strategy?: string;
   scopes?: string[];
 };
 
@@ -32,7 +32,7 @@ const defaultOptions: Options = {
 
 The rule accepts an options object with the following properties:
 
-- `strategy` - Sets the strategy name or class to be used for imports ordering.
+- `strategy` - Sets the strategy name to be used for imports ordering.
 - `scopes`- Sets the scopes considered as local imports so imports can sort them accordingly..
 
 The default config will set `logical` as the default strategy.
