@@ -18,7 +18,7 @@ build: os.#Container & {
   copy: "/plugin": from: defaults.source
   dir: "/plugin"
   command: """
-    yarn &&\\
+    yarn --frozen-lockfile &&\\
     yarn build
   """
 }
