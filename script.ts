@@ -15,7 +15,7 @@ const program = new Denomander({
 });
 
 /**
- * The publish workflow in a nushell:
+ * The publish workflow in a nutshell:
  *  - yarn version --new-version $VERSION --message ":bookmark: $VERSION."
  *  - git push origin refs/tags/v$VERSION
  *  - git push
