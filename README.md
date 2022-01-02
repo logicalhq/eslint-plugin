@@ -12,6 +12,9 @@
   <a href="https://logical.work">
     <img src="https://logicalhq.s3.ca-central-1.amazonaws.com/badges/logical-badge.svg" alt="Logical"/>
   </a>
+  <a href="https://circleci.com/gh/logicalhq/eslint-plugin">
+    <img src="https://flat.badgen.net/github/status/logicalhq/eslint-plugin/main/ci/circleci" alt="CircleCI Status"/>
+  </a>
   <img src="https://flat.badgen.net/npm/v/@logicalhq/eslint-plugin" alt="Version"/>
 </p>
 
