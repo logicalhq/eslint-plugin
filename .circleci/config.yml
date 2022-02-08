@@ -1,7 +1,7 @@
 version: 2.1
 
 orbs:
-  dagger: logicalhq/dagger@1.1
+  dagger: logicalhq/dagger@1.2
 
 workflows:
   build:
