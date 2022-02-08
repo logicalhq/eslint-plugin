@@ -11,7 +11,7 @@ module.exports = {
     '^lib(.*)$': '<rootDir>/lib/$1',
     '^test(.*)$': '<rootDir>/test/$1'
   },
-  testPathIgnorePatterns: ['/node_modules/'],
+  testPathIgnorePatterns: ['/node_modules/', '/cue.mod/'],
   modulePathIgnorePatterns: ['<rootDir>/dist/'],
   testMatch: ['<rootDir>/{test/utils,lib}/**/*.spec.ts'],
   collectCoverage: false,
