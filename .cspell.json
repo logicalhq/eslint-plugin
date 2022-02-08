@@ -1,6 +1,7 @@
 {
-  "version": "0.1",
-  "language": "en",
+  "$schema": "https://raw.githubusercontent.com/streetsidesoftware/cspell/main/cspell.schema.json",
+  "version": "0.2",
+  "language": "en-US",
   "ignorePaths": [
     "**/coverage/**",
     "**/node_modules/**",
