@@ -1,10 +1,100 @@
 version: 2.1
 
-orbs:
-  dagger: logicalhq/dagger@1.2
+defaults: &defaults
+  working_directory: ~/eslint-plugin
+
+jobs:
+  install:
+    <<: *defaults
+    docker: *docker
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-eslint-plugin-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+            - v1-eslint-plugin-{{ arch }}-{{ .Branch }}
+      - run:
+          name: Installing Dependencies
+          command: |
+            yarn --frozen-lockfile
+            git diff --quiet --exit-code
+      - save_cache:
+          paths:
+            - ./node_modules
+            - ~/.cache
+          key: v1-eslint-plugin-{{ arch }}-{{ .Branch }}-{{ checksum "yarn.lock" }}
+      - persist_to_workspace:
+          root: ~/
+          paths:
+            - eslint-plugin
+            - .cache
+  lint:
+    <<: *defaults
+    docker: *docker
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Execute Linters and Scanners
+          command: |
+            yarn link
+            yarn link "@logicalhq/eslint-plugin"
+            yarn fmt:check
+            yarn lint --format junit --output-file test-results/eslint/results.xml
+            yarn lint:spelling
+            npx audit-ci
+      - store_test_results:
+          path: test-results
+      - store_artifacts:
+          path: test-results
+  unit:
+    <<: *defaults
+    docker: *docker
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Running Unit Tests
+          command: |
+            mkdir -pv test-results/jest
+            yarn test --coverage
+          environment:
+            JEST_JUNIT_OUTPUT_DIR: test-results/jest
+            JEST_JUNIT_OUTPUT_NAME: results.xml
+      - store_test_results:
+          path: test-results
+      - store_artifacts:
+          path: test-results
+  e2e:
+    <<: *defaults
+    docker: *docker
+    steps:
+      - attach_workspace:
+          at: ~/
+      - run:
+          name: Running End-to-End Tests
+          command: |
+            mkdir -pv test-results/jest-e2e
+            yarn test:e2e
+          environment:
+            JEST_JUNIT_OUTPUT_DIR: test-results/jest-e2e
+            JEST_JUNIT_OUTPUT_NAME: results.xml
+      - store_test_results:
+          path: test-results
+      - store_artifacts:
+          path: test-results
 
 workflows:
-  build:
+  version: 2
+  eslint-config:
     jobs:
-      - dagger/dagger:
-          executor: dagger/default
+      - install
+      - lint:
+          requires:
+            - install
+      - unit:
+          requires:
+            - install
+      - e2e:
+          requires:
+            - install
