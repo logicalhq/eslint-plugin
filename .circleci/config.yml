@@ -3,6 +3,10 @@ version: 2.1
 defaults: &defaults
   working_directory: ~/eslint-plugin
 
+aliases:
+  - &docker
+    - image: cimg/node:18.0.0
+
 jobs:
   install:
     <<: *defaults
