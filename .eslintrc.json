@@ -5,7 +5,7 @@
     "project": true,
     "sourceType": "module"
   },
-  "plugins": ["@typescript-eslint", "@logicalhq"],
+  "plugins": ["@typescript-eslint"],
   "extends": [
     "@logicalhq/eslint-config-base",
     "plugin:@typescript-eslint/recommended",
@@ -13,7 +13,6 @@
   ],
   "rules": {
     "no-case-declarations": "off",
-    "@logicalhq/imports": ["error", { "scopes": ["lib", "test"] }],
     "@typescript-eslint/no-explicit-any": "off"
   },
   "overrides": [
