@@ -33,12 +33,6 @@ package-lock.json
 test-results
 junit.xml
 
-# Ignore vscode files except extensions.
-.vscode
-!.vscode/extensions.json
-
 # Ignore tsc build info files.
 *.tsbuildinfo
 
-# Ignore dagger files.
-cue.mod
