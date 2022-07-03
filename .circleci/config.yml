@@ -5,7 +5,7 @@ defaults: &defaults
 
 aliases:
   - &docker
-    - image: cimg/node:18.0.0
+    - image: cimg/node:18.4.0
 
 jobs:
   install:
@@ -41,10 +41,10 @@ jobs:
       - run:
           name: Execute Linters and Scanners
           command: |
+            npx audit-ci
             yarn fmt:check
             yarn lint --format junit --output-file test-results/eslint/results.xml
             yarn lint:spelling
-            npx audit-ci
       - store_test_results:
           path: test-results
       - store_artifacts:
