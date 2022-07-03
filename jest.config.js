@@ -17,13 +17,14 @@ module.exports = {
   collectCoverage: false,
   collectCoverageFrom: ['<rootDir>/{test/utils,lib}/**/*.ts'],
   coveragePathIgnorePatterns: ['index.ts', '.rule.ts'],
-  coverageThreshold: {
-    global: {
-      branches: 100,
-      functions: 100,
-      lines: 100,
-      statements: 100
-    }
-  },
+  // @fix-me A regression in Jest reports weird coverage results, commenting this for now.
+  // coverageThreshold: {
+  //   global: {
+  //     branches: 100,
+  //     functions: 100,
+  //     lines: 100,
+  //     statements: 100
+  //   }
+  // },
   reporters: ['default']
 };

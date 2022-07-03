@@ -5,6 +5,7 @@ import { ImportsStrategy, StrategyOptions } from 'lib/strategies/interface';
 import { findLastIndex } from 'lib/utils/array.utils';
 import { compareString } from 'lib/utils/compare.utils';
 
+/* istanbul ignore next */
 export const builtin = [
   'assert',
   'async_hooks',
