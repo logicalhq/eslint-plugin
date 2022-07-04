@@ -2,8 +2,6 @@
 .vscode
 .temp
 .netlify
-.dagger
-cue.mod
 coverage
 dist
 index.html
